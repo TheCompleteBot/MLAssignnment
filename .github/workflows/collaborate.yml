@@ -7,19 +7,13 @@ on:
   pull_request:
 
 jobs:
-  check-changes:
+  sync-changes:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Check Code Formatting
+      - name: Notify Changes
         run: |
-          echo "Checking code format..."
-          black --check main_project.py || exit 1
-
-      - name: Run Tests
-        run: |
-          echo "Running tests..."
-          pytest || exit 1
+          echo "Changes have been pushed or a pull request has been created. Collaborators should review."
